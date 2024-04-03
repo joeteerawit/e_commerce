@@ -11,8 +11,8 @@ defmodule ECommerce.Shopping.CartItems do
     |> where([c], c.product_id == ^params.product_id and c.cart_id == ^params.cart_id)
     |> Repo.one()
     |> case do
-      nil -> create_new_cart_item(params)
-      cart_item -> update_cart_item(cart_item, params)
+      # nil -> create_new_cart_item(params)
+      # cart_item -> update_cart_item(cart_item, params)
     end
 
     # %CartItem{}
