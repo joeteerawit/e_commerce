@@ -4,6 +4,7 @@ defmodule ECommerceWeb.Router do
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
+    plug ECommerceWeb.Plugs.SessionPlug
     plug :fetch_live_flash
     plug :put_root_layout, html: {ECommerceWeb.Layouts, :root}
     plug :protect_from_forgery
@@ -18,8 +19,8 @@ defmodule ECommerceWeb.Router do
     pipe_through :browser
 
     # get "/", PageController, :home
-    live "/", ProductLive.Index
-    live "/carts", ProductLive.Cart
+    live "/", Shopping.Index
+    live "/carts", Shopping.CartLive
     # live "/checkout", ProductLive.Index
     # live "/payments", ProductLive.Index
   end

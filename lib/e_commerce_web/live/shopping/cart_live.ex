@@ -1,10 +1,10 @@
-defmodule ECommerceWeb.ProductLive.Cart do
+defmodule ECommerceWeb.Shopping.CartLive do
   use ECommerceWeb, :live_view
 
   @impl true
   def mount(_param, _session, socket) do
     cart_items =
-      Enum.map(1..50, fn i ->
+      Enum.map(1..10, fn i ->
         %{
           id: "#{i}",
           name: "Product #{i}",
@@ -17,7 +17,7 @@ defmodule ECommerceWeb.ProductLive.Cart do
     new_socket =
       socket
       |> assign(cart_items: cart_items)
-      |> assign(total_price: 1000.00)
+      |> assign(total_price: "1,000.00")
 
     {:ok, new_socket}
   end

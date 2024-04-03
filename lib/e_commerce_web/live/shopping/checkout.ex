@@ -1,4 +1,4 @@
-defmodule ECommerceWeb.ProductLive.Checkout do
+defmodule ECommerceWeb.Shopping.Checkout do
   use ECommerceWeb, :live_view
 
   @impl true

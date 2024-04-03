@@ -1,4 +1,4 @@
-defmodule ECommerceWeb.ProductLiveTest do
+defmodule ECommerceWeb.ShoppingTest do
   use ECommerceWeb.ConnCase
 
   import Phoenix.LiveViewTest

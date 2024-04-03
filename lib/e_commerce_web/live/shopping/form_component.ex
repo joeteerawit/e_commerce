@@ -1,4 +1,4 @@
-defmodule ECommerceWeb.ProductLive.FormComponent do
+defmodule ECommerceWeb.Shopping.FormComponent do
   use ECommerceWeb, :live_component
 
   alias ECommerce.Products

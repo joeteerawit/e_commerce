@@ -6,7 +6,7 @@ defmodule ECommerce.Products do
   import Ecto.Query, warn: false
   alias ECommerce.Repo
 
-  alias ECommerce.Products.Product
+  alias ECommerce.Shopping.Product
 
   @doc """
   Returns the list of product.
