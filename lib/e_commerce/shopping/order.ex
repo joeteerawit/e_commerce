@@ -3,7 +3,7 @@ defmodule ECommerce.Shopping.Order do
 
   use Ecto.Schema
 
-  @attributes [:status, :total_price, :delivery_address]
+  @attributes [:status, :total_price, :delivery_address, :user_id]
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
 
@@ -20,7 +20,6 @@ defmodule ECommerce.Shopping.Order do
   def changeset(order \\ %__MODULE__{}, params) do
     order
     |> Changeset.cast(params, @attributes)
-    |> Changeset.cast_assoc(:user, with: &ECommerce.User.changeset/2)
     |> Changeset.validate_required(@attributes)
   end
 end

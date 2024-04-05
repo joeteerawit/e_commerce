@@ -10,6 +10,12 @@ defmodule ECommerce.User do
     field :session_id, :string
     field :type, Ecto.Enum, values: [:customer, :anonymous], default: :anonymous
 
+    has_many :carts, ECommerce.Shopping.Cart
+    has_many :cart_items, ECommerce.Shopping.CartItem
+    has_many :orders, ECommerce.Shopping.Order
+    has_many :order_items, ECommerce.Shopping.OrderItem
+    has_many :payments, ECommerce.Payment
+
     timestamps(type: :utc_datetime)
   end
 

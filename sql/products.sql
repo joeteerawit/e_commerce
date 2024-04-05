@@ -1,3 +1,4 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 INSERT INTO products (id, name, price, image_url, description, merchant_id, inserted_at, updated_at)
 VALUES
 (uuid_generate_v4(),'Elegant Desk Lamp', 100.00, 'https://source.unsplash.com/random', 'Description for Elegant Desk Lamp', '35096391-7144-4807-8e9a-87e4d5a0a3c4', NOW(), NOW()),

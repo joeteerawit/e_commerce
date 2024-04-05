@@ -1,0 +1,12 @@
+<h1 class="text-2xl mb-4 font-bold">Pay with Credit Card</h1>
+<.simple_form for={@form} phx-submit="submit" class="space-y-4">
+  <.input type="text" label="Card Number" name="card_number" field={@form[:card_number]} />
+  <.input type="text" label="Expiry Date" name="expiry_date" field={@form[:expiry_date]} />
+  <.input type="text" label="CVV" name="cvv" field={@form[:cvv]} />
+  <.input type="text" label="Holder Name" name="holder_name" field={@form[:holder_name]} />
+
+  <button type="submit"
+    class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+    Confirm
+  </button>
+</.simple_form>

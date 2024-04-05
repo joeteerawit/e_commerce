@@ -3,6 +3,7 @@ defmodule ECommerce.Shopping.Cart do
 
   use Ecto.Schema
 
+  @attributes [:session_id, :user_id]
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
 
@@ -15,7 +16,8 @@ defmodule ECommerce.Shopping.Cart do
 
   def changeset(cart \\ %__MODULE__{}, params) do
     cart
-    |> Changeset.cast(params, [:session_id, :user_id])
-    |> Changeset.validate_required([:session_id, :user_id])
+    |> Changeset.cast(params, @attributes)
+    |> Changeset.validate_required(@attributes)
+    |> Changeset.unique_constraint(:session_id)
   end
 end

@@ -16,6 +16,7 @@ defmodule ECommerce.Application do
       {Finch, name: ECommerce.Finch},
       # Start a worker by calling: ECommerce.Worker.start_link(arg)
       # {ECommerce.Worker, arg},
+      {Task.Supervisor, name: ECommerce.AsyncEmailSupervisor},
       # Start to serve requests, typically the last entry
       ECommerceWeb.Endpoint
     ]

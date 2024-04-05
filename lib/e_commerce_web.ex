@@ -61,6 +61,7 @@ defmodule ECommerceWeb do
   def live_component do
     quote do
       use Phoenix.LiveComponent
+      alias ECommerceWeb.Router.Helpers, as: Routes
 
       unquote(html_helpers())
     end

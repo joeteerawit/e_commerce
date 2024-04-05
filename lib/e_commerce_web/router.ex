@@ -4,11 +4,11 @@ defmodule ECommerceWeb.Router do
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
-    plug ECommerceWeb.Plugs.SessionPlug
     plug :fetch_live_flash
     plug :put_root_layout, html: {ECommerceWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug ECommerceWeb.Plugs.SessionPlug
   end
 
   pipeline :api do
@@ -20,9 +20,20 @@ defmodule ECommerceWeb.Router do
 
     # get "/", PageController, :home
     live "/", Shopping.Index
-    live "/carts", Shopping.CartLive
-    # live "/checkout", ProductLive.Index
-    # live "/payments", ProductLive.Index
+    live "/carts", Shopping.CartLive, :carts
+
+    scope "/payments", Payments do
+      live "/credit-card", CreditCardLive, :credit_card
+      live "/crypto", CryptoLive, :crypto
+      live "/prompt-pay", PromptPayLive, :prompt_pay
+      live "/completed", CompletedLive, :completed
+    end
+  end
+
+  scope "/api/webhook", ECommerceWeb.Controllers do
+    pipe_through :api
+
+    post "/", PaymentWebHookController, :create
   end
 
   # Other scopes may use custom stacks.

@@ -1,0 +1,48 @@
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <h1 class="text-green-600 text-2xl mb-4 font-bold">Completed Payment</h1>
+    <div class="flex space-x-3">
+        <p class="font-bold">Payment ID:</p>
+        <p class="font-bold"><%= @payment.reference_id %></p>
+    </div>
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Product name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Unit Price
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Quantity
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Total Price
+                </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <%= for order <- @orders do %>
+                <tr
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <%= order.product.name %>
+                    </th>
+                    <td class="px-6 py-4 self-center">
+                        <%= order.product.price %>
+                    </td>
+                    <td class="px-6 py-4">
+                        <%= order.quantity %>
+                    </td>
+                    <td class="px-6 py-4">
+                        <%= Decimal.mult(order.product.price, Decimal.new(order.quantity)) %>
+                    </td>
+                </tr>
+                <% end %>
+        </tbody>
+    </table>
+
+</div>

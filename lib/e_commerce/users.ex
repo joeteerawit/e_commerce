@@ -8,6 +8,8 @@ defmodule ECommerce.Users do
     |> Repo.insert()
   end
 
+  def find_by_session_id(nil), do: create(Ecto.UUID.generate())
+
   def find_by_session_id(session_id) do
     User
     |> Repo.get_by(session_id: session_id)
