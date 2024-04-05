@@ -1,18 +1,21 @@
 # ECommerce
 
-To start your Phoenix server:
+## start db
+```bash
+docker run -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres postgis/postgis
+```
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+## prepare data
+use any db client to insert data
+- copy sql from `sql/merchant_bank_accounts.sql` then insert it to db
+- copy sql from `sql/merchants.sql` then insert it to db
+- copy sql from `sql/products.sql` then insert it to db
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+### run
+```bash
+mix ecto.create
+mix ecto.migrate
 
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+iex -S mix phx.server
+```
